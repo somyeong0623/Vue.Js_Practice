@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <textarea name="ta" id="ta" cols="30" rows="10" v-model="message"></textarea>
+      <h1 v-if="!message">no message</h1>
+      <h1 v-else-if="message=='qqq'">qqqqqqe</h1>
+      <h1 v-else>{{message}}</h1>
+      <hr />
+
+      <input type="text" v-model="id" />
+      <h1 v-if="!id">id를 입력해주세요.</h1>
+      <h1 v-else-if="id=='tommy'">사용중인 아이디입니다.</h1>
+      <h1 v-else>{{id}}</h1>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: "qqq",
+          id: "",
+        },
+      });
+    </script>
+  </body>
+</html>

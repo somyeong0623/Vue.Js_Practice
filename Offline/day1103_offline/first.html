@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 1. vue cdn 표시  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+
+    <title>Document</title>
+  </head>
+
+  <!-- 실행 순서
+    1. 뷰 라이브러리 로딩
+    2. 화면 요소 생성(html tag로 구성한 )
+    3. 뷰 인스턴스 생성
+    4. 화면과 뷰 인스턴스가 연결이 됨 (el로 지정한 부분)
+    5. 화면이 전환(데이터가 치환됨)
+    6. 화면으로 확인
+  -->
+
+  <body>
+    <!-- 2. view: 화면 요소 -->
+    <div id="app">{{age}} -- {{name}} -- {{msg}}</div>
+
+    <!-- 3. model: logic & data -->
+    <script>
+      //vm(ViewModel)
+      var vm = new Vue({
+        el: "#app", // vue 객체가 관리하는 화면 요소
+        data: {
+          age: 25,
+          name: "tommy lee",
+          msg: " 나는 메세지다 !! ",
+        },
+      });
+
+      var vm = new Vue();
+    </script>
+  </body>
+</html>

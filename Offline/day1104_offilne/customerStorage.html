@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      번호: <input type="text" v-model="num" /> <br />
+      이름: <input type="text" v-model="name" /> <br />
+      주소: <input type="text" v-model="address" /> <br />
+
+      <button @click="add">추가</button>
+      <button @click="remove">삭제</button>
+      <button @click="selectAll">전체조회</button>
+      <button @click="removeAll">전체삭제</button>
+      <button @click="search">검색</button>
+      <button @click="init">초기화</button>
+      <hr />
+
+      <ul v-html="li"></ul>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          num: "",
+          name: "",
+          address: "",
+          li: "", // <- 추가
+        },
+        methods: {
+          add() {
+            var param = { num: this.num, name: this.name, address: this.address };
+            localStorage.setItem(this.num, JSON.stringify(param)); // param자리에는 json 객체로 변환해서 넣어야한다.
+            this.init();
+          },
+          remove() {
+            localStorage.removeItem(this.num);
+            this.init();
+          },
+          selectAll() {
+            li = "";
+
+            for (let i = 0; i < localStorage.length; i++) {
+              var key = localStorage.key(i);
+
+              // json 형식의 문자열 -> json 객체로 다시 바꿔야함
+              var json = JSON.parse(localStorage.getItem(key));
+              li += `<li>${json.num} -- ${json.name} -- ${json.address}</li>`;
+            }
+            this.li = li;
+          },
+          removeAll() {
+            localStorage.clear();
+          },
+          search() {
+            var li = "";
+            var json = JSON.parse(localStorage.getItem(this.num));
+            li += `<li>${json.num} -- ${json.name} -- ${json.address}</li>`;
+            this.li = li;
+            this.init();
+          },
+          init() {
+            this.num = "";
+            this.name = "";
+            this.address = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

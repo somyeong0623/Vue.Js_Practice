@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- directive: 
+        태그 안에서 v-로 시작하는 속성들. 화면 요소를 좀 더 쉽게 조작하기 위해서 사용. 
+        v-bind, v-model, v-if, v-show, v-for, v-text, v-html, v-on, v-else, v-else-if ..... 
+    
+    -->
+
+    <div id="app">
+      <div>
+        <h2 v-pre>{{그대로 출력해 주세요.}}</h2>
+        <span>text: {{msg}}</span>
+      </div>
+      <hr />
+
+      <div v-text="msg"></div>
+      <div v-html="msg"></div>
+      <hr />
+
+      <!-- v-if: 조건이 거짓인 경우 태그가 주석으로 처리됨.
+          v-show: 조건이 거짓인 경우 display:none으로 조정함. 
+      -->
+      <a href="#" v-if="num<20">gogo, vue!!! </a>
+      <a href="#" v-else-if="num>=20">bye, vue!!! </a>
+      <a href="#" v-else>sleep, vue!!! </a>
+      <hr />
+
+      <a href="#" v-show="true">gogo, vue!!! </a>
+      <hr />
+
+      <ul>
+        <li v-for="system in systems">{{system}}</li>
+      </ul>
+      <hr />
+
+      <!-- v-bind: 원래 태그가 가지는 속성과 뷰 객체의 데이티를 연결 시킬 때 -->
+      <h5 v-bind:id="uid">vue day-1</h5>
+      <!-- v-bind대신 :로 나타낼 수도 있음  -->
+      <h5 :id="uid2">vue day-2</h5>
+      <hr />
+
+      <img :src="src" alt="블라우스" />
+      <hr />
+
+      <!-- v-on: 이벤트 등록  -->
+      <button v-on:click="hello">press</button>
+      <!-- [v-on:]은 [@]로 나타낼 수 있음  -->
+      <button @click="hello">press</button>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          num: 19,
+          flag1: false,
+          flag2: true,
+          systems: ["android", "ios", "windows"],
+          uid: "a100",
+          msg: "<h1>welcome, vue!!! </h1>",
+          src: "./img/blueBlouse.jpg",
+        },
+        methods: {
+          hello() {
+            alert("hihi~~~~~");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

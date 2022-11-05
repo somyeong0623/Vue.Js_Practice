@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 1. vue cdn 표시  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{code}}</div>
+    <script>
+      var vm = new Vue({
+        el: "#app", // 사용할 데이터 영역
+        data: {
+          code: "a123",
+        },
+        template: "<h1>hello, vue!</h1>", //vue 객체의 화면요소
+        methods: {},
+        filters: {},
+        computed: {},
+      });
+    </script>
+  </body>
+</html>
